@@ -12,7 +12,7 @@
 
 **Restaurante Pargo Rojo** es una page orientada a la atracción de turistas y locales interesados en la gastronomía marina tradicional de la región. La plataforma presenta un catálogo digital de platos típicos (pargo rojo frito, cazuelas de mariscos, ceviches, patacones), combinación visual atractiva y llamados a la acción para reservas directas.
 
-## ✨ Características Principales
+##  Características Principales
 
 -  **Diseño Responsivo (Mobile-First):** Visualización adaptada para móviles, tablets y computadores.
 -  **Menú Digital Interactivo:** Presentación clara de especialidades marinas, precios e ingredientes.

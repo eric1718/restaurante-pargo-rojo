@@ -559,6 +559,63 @@ a.c13-card:hover .c13-card-arrow {
     background: #a01830;
 }
 
+.contenedor-qr {
+    width: 100%;
+    max-width: 520px;
+    margin: 1.5rem auto 0;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    border: 2px solid #c41e3a;
+    border-radius: 18px;
+
+    background: #ffffff;
+    box-shadow: 0 8px 28px rgba(196, 30, 58, 0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.contenedor-qr img {
+    display: block;
+
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+
+@media (max-width: 600px) {
+
+    .contenedor-qr {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .contenedor-qr img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+
+}
+
+body.tema-oscuro .contenedor-qr {
+    border: 1px solid white;
+    background-color: #1e1e1e;
+    border-color: #444;
+}
+
 /* inicio del estilo dentro del contenedor13 */
 
 body.tema-oscuro .contenedor13 {

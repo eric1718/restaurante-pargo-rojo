@@ -406,7 +406,124 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // -----------------------------------------------------------
 
+/* =========================================
+   CALIFICACIONES GOOGLE - PARGO ROJO
+========================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const estrellas = document.querySelectorAll(
+        "#estrellas-calificacion .estrella"
+    );
+
+    const mensaje = document.getElementById(
+        "mensaje-calificacion"
+    );
+
+    const botonGoogle = document.getElementById(
+        "boton-calificar-google"
+    );
+
+    // Si no estamos en la página de contacto, salir.
+    if (!estrellas.length || !mensaje || !botonGoogle) {
+        return;
+    }
+
+    let calificacionSeleccionada = 0;
+
+    const mensajes = {
+        1: "😞 ¡Lamentamos que tu experiencia no haya sido buena!",
+        2: "😕 Gracias por tu opinión. Podemos mejorar.",
+        3: "🙂 ¡Gracias! Seguiremos trabajando para mejorar.",
+        4: "😊 ¡Nos alegra que hayas disfrutado tu experiencia!",
+        5: "🤩 ¡Excelente! ¡Muchas gracias por calificarnos!"
+    };
+
+    // Pintar las estrellas seleccionadas.
+    function actualizarEstrellas(valor) {
+
+        estrellas.forEach(estrella => {
+
+            const numero = Number(estrella.dataset.valor);
+
+            estrella.classList.toggle(
+                "activa",
+                numero <= valor
+            );
+
+            estrella.setAttribute(
+                "aria-pressed",
+                numero === calificacionSeleccionada
+                    ? "true"
+                    : "false"
+            );
+
+        });
+    }
+
+    // Seleccionar una calificación.
+    estrellas.forEach(estrella => {
+
+        estrella.addEventListener("click", () => {
+
+            calificacionSeleccionada = Number(
+                estrella.dataset.valor
+            );
+
+            actualizarEstrellas(calificacionSeleccionada);
+
+            mensaje.textContent =
+                mensajes[calificacionSeleccionada];
+
+            botonGoogle.disabled = false;
+
+        });
+
+        // Efecto al pasar el cursor.
+        estrella.addEventListener("mouseenter", () => {
+
+            actualizarEstrellas(
+                Number(estrella.dataset.valor)
+            );
+
+        });
+
+    });
+
+    // Restaurar la selección visual al retirar el cursor.
+    const contenedorEstrellas = document.getElementById(
+        "estrellas-calificacion"
+    );
+
+    contenedorEstrellas.addEventListener("mouseleave", () => {
+
+        actualizarEstrellas(calificacionSeleccionada);
+
+    });
+
+    // Abrir Google Maps para publicar la reseña.
+    botonGoogle.addEventListener("click", () => {
+
+        if (calificacionSeleccionada === 0) {
+            return;
+        }
+
+        const enlaceGoogle =
+            "https://maps.app.goo.gl/fz3Ybj3eZXVNAN8G8";
+
+        window.open(
+            enlaceGoogle,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    });
+
+});
+
+// -----------------------------------------------------------
+// -----------------------------------------------------------
+// -----------------------------------------------------------
 
 
 

@@ -2515,8 +2515,185 @@ body.tema-oscuro nav a.activo {
 #id-oscuro:hover {
     background-color: #444;
 }
+
+
+/* =========================================
+   SISTEMA DE CALIFICACIONES - PARGO ROJO
+========================================= */
+
+.contenedor-calificanos {
+    width: 90%;
+    max-width: 550px;
+    margin: 30px auto;
+    padding: 25px 20px;
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background: #fff;
+    border: 1px solid #e6d8c9;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.contenedor-calificanos h3 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    color: #8b1e1e;
+}
+
+.calificacion-descripcion {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+/* Estrellas */
+
+.estrellas-calificacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.estrella {
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    font-size: 43px;
+    color: #c9c9c9;
+
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.estrella:hover {
+    transform: scale(1.2);
+}
+
+.estrella.activa {
+    color: #ffb400;
+}
+
+.estrella:focus-visible {
+    outline: 2px solid #8b1e1e;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Mensaje dinámico */
+
+.mensaje-calificacion {
+    min-height: 25px;
+    margin: 15px 0;
+
+    font-size: 15px;
+    font-weight: bold;
+    color: #8b1e1e;
+}
+
+/* Botón Google */
+
+.boton-calificar-google {
+    width: 100%;
+    max-width: 330px;
+
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #8b1e1e;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.boton-calificar-google:hover:not(:disabled) {
+    background: #b52b2b;
+    transform: translateY(-2px);
+}
+
+.boton-calificar-google:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.calificacion-nota {
+    margin: 12px 0 0;
+    font-size: 11px;
+    color: #777;
+}
+
+/* Adaptación para celulares */
+
+@media (max-width: 480px) {
+
+    .contenedor-calificanos {
+        width: 94%;
+        padding: 22px 14px;
+    }
+
+    .contenedor-calificanos h3 {
+        font-size: 21px;
+    }
+
+    .estrella {
+        font-size: 38px;
+    }
+
+    .estrellas-calificacion {
+        gap: 5px;
+    }
+
+    .boton-calificar-google {
+        font-size: 13px;
+    }
+}
+
+/* Tema oscuro */
+
+body.tema-oscuro .contenedor-calificanos {
+    background: #252525;
+    border-color: #494949;
+}
+
+body.tema-oscuro .calificacion-descripcion {
+    color: #ddd;
+}
+
+body.tema-oscuro .estrella {
+    color: #777;
+}
+
+body.tema-oscuro .estrella.activa {
+    color: #ffb400;
+}
+
+body.tema-oscuro .mensaje-calificacion {
+    color: #ffb4a8;
+}
+
+body.tema-oscuro .calificacion-nota {
+    color: #bbb;
+}
+
+
 /* ------------------------------------------------------ */
+
 /* Animaciones de la pagina web */
+
 /* Nav: Animación Luz deslizante interna */
 @keyframes shine {
     from { left: -100%; }

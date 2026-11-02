@@ -420,14 +420,18 @@ document.addEventListener("DOMContentLoaded", () => {
         "mensaje-calificacion"
     );
 
-    const botonGoogle = document.getElementById(
-        "boton-calificar-google"
+    const contenedorEstrellas = document.getElementById(
+        "estrellas-calificacion"
     );
 
-    // Si no estamos en la página de contacto, salir.
-    if (!estrellas.length || !mensaje || !botonGoogle) {
+    // Verificar que estamos en la página correcta.
+    if (!estrellas.length || !mensaje || !contenedorEstrellas) {
         return;
     }
+
+    // Enlace actual de Google Maps del restaurante.
+    const enlaceGoogle =
+        "https://maps.app.goo.gl/fz3Ybj3eZXVNAN8G8";
 
     let calificacionSeleccionada = 0;
 
@@ -439,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
         5: "🤩 ¡Excelente! ¡Muchas gracias por calificarnos!"
     };
 
-    // Pintar las estrellas seleccionadas.
+    // Actualizar las estrellas visualmente.
     function actualizarEstrellas(valor) {
 
         estrellas.forEach(estrella => {
@@ -459,9 +463,10 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         });
+
     }
 
-    // Seleccionar una calificación.
+    // Seleccionar estrellas y abrir Google inmediatamente.
     estrellas.forEach(estrella => {
 
         estrella.addEventListener("click", () => {
@@ -475,11 +480,16 @@ document.addEventListener("DOMContentLoaded", () => {
             mensaje.textContent =
                 mensajes[calificacionSeleccionada];
 
-            botonGoogle.disabled = false;
+            // Redirigir inmediatamente a Google Maps.
+            window.open(
+                enlaceGoogle,
+                "_blank",
+                "noopener,noreferrer"
+            );
 
         });
 
-        // Efecto al pasar el cursor.
+        // Efecto visual al pasar el cursor.
         estrella.addEventListener("mouseenter", () => {
 
             actualizarEstrellas(
@@ -490,32 +500,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    // Restaurar la selección visual al retirar el cursor.
-    const contenedorEstrellas = document.getElementById(
-        "estrellas-calificacion"
-    );
-
+    // Restaurar las estrellas al retirar el cursor.
     contenedorEstrellas.addEventListener("mouseleave", () => {
 
         actualizarEstrellas(calificacionSeleccionada);
-
-    });
-
-    // Abrir Google Maps para publicar la reseña.
-    botonGoogle.addEventListener("click", () => {
-
-        if (calificacionSeleccionada === 0) {
-            return;
-        }
-
-        const enlaceGoogle =
-            "https://maps.app.goo.gl/fz3Ybj3eZXVNAN8G8";
-
-        window.open(
-            enlaceGoogle,
-            "_blank",
-            "noopener,noreferrer"
-        );
 
     });
 
